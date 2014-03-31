@@ -35,8 +35,8 @@ Module Core
 
 
 
-        'webView.ExecuteJavascript("$('#UserName').val('smolj'); $('#Password').val('test'); $('#submitButton').trigger('click');")
-        Debug.Print(webView.ExecuteJavascriptWithResult("$('#UserName').val('smolj'); $('#Password').val('test'); $('#submitButton').trigger('click');$('#submitButton')"))
+        'webView.ExecuteJavascript("$('#UserName').val('test'); $('#Password').val('test'); $('#submitButton').trigger('click');")
+        Debug.Print(webView.ExecuteJavascriptWithResult("$('#UserName').val('test'); $('#Password').val('test'); $('#submitButton').trigger('click');$('#submitButton')"))
         Debug.Print(webView.GetLastError)
         Dim surface As BitmapSurface = CType(webView.Surface, BitmapSurface)
         surface.SaveToPNG("result.png", True)
