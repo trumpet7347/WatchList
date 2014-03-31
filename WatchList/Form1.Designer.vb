@@ -24,7 +24,7 @@ Partial Class WatchList
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(WatchList))
-        Dim WebPreferences1 As Awesomium.Core.WebPreferences = New Awesomium.Core.WebPreferences(True)
+        Dim WebPreferences2 As Awesomium.Core.WebPreferences = New Awesomium.Core.WebPreferences(True)
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -56,7 +56,6 @@ Partial Class WatchList
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.TestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.WebSessionProvider1 = New Awesomium.Windows.Forms.WebSessionProvider(Me.components)
@@ -353,7 +352,7 @@ Partial Class WatchList
         '
         Me.ToolStripStatusLabel1.AutoSize = False
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(465, 17)
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(496, 17)
         Me.ToolStripStatusLabel1.Spring = True
         Me.ToolStripStatusLabel1.Text = "Ready..."
         '
@@ -364,18 +363,12 @@ Partial Class WatchList
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TestToolStripMenuItem, Me.HelpToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HelpToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(613, 24)
         Me.MenuStrip1.TabIndex = 2
         Me.MenuStrip1.Text = "MenuStrip1"
-        '
-        'TestToolStripMenuItem
-        '
-        Me.TestToolStripMenuItem.Name = "TestToolStripMenuItem"
-        Me.TestToolStripMenuItem.Size = New System.Drawing.Size(41, 20)
-        Me.TestToolStripMenuItem.Text = "Test"
         '
         'HelpToolStripMenuItem
         '
@@ -387,14 +380,14 @@ Partial Class WatchList
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'WebSessionProvider1
         '
-        WebPreferences1.LoadImagesAutomatically = False
-        WebPreferences1.RemoteFonts = False
-        Me.WebSessionProvider1.Preferences = WebPreferences1
+        WebPreferences2.LoadImagesAutomatically = False
+        WebPreferences2.RemoteFonts = False
+        Me.WebSessionProvider1.Preferences = WebPreferences2
         Me.WebSessionProvider1.Views.Add(Me.WebControl1)
         '
         'WatchList
@@ -452,7 +445,6 @@ Partial Class WatchList
     Private WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
     Friend WithEvents ImageList1 As System.Windows.Forms.ImageList
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
-    Friend WithEvents TestToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 

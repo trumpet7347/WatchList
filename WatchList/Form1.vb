@@ -70,7 +70,7 @@
 
     End Sub
 
-    Private Sub TestToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TestToolStripMenuItem.Click
+    Private Sub TestToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Test()
     End Sub
 
@@ -100,6 +100,8 @@
         btnCancel.Enabled = True
         EveGateHandler.CreatedLabelID = ""
         Dim member As ListViewItem, i As Integer = 0
+        ToolStripProgressBar1.Value = 0
+        ToolStripProgressBar1.Maximum = MembersList.Items.Count
         For Each member In MembersList.Items()
             Application.DoEvents()
             If CancellingOperation Then
@@ -113,6 +115,7 @@
                 i = 0
                 EveGateHandler.ApplyLabelToNeutrals(Me.ContactLabel)
             End If
+            ToolStripProgressBar1.Value = ToolStripProgressBar1.Value + 1
         Next
 
         If i <> 0 Then EveGateHandler.ApplyLabelToNeutrals(Me.ContactLabel)
@@ -120,6 +123,7 @@ cancel:
         btnAddAll.Enabled = True
         btnCancel.Enabled = False
         CancellingOperation = False
+        ToolStripProgressBar1.Value = 0
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click

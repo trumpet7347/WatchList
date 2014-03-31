@@ -9,6 +9,8 @@ Public Class EveGate
     Private webView As WebView
     Private Parent As WatchList
     Public CreatedLabelID As String = ""
+    Private _tickcount As Integer
+    Private Const THROTTLE_MS As Integer = 2100
     Public Sub New(ParentWatchList As WatchList)
         Me.Parent = ParentWatchList
         Dim pref As WebPreferences = New WebPreferences
@@ -122,13 +124,21 @@ Public Class EveGate
         Me.Parent.GetWebView().Update()
 
         helperSS("contact-ADDING.png")
-
+        PauseUntilFinished()
+        PreventRaceCondition()
 
         'Debug.Print(Me.Parent.GetWebView().Source.ToString)
         Parent.ToolStripStatusLabel2.Text = "Added contact " & CharacterName
         Return navigated
 
     End Function
+
+    Private Sub PreventRaceCondition()
+        Me._tickcount = System.Environment.TickCount
+        Do Until System.Environment.TickCount - Me._tickcount > THROTTLE_MS
+            Application.DoEvents()
+        Loop
+    End Sub
 
     Public Function ApplyLabelToNeutrals(label As String) As Boolean
 
@@ -162,6 +172,7 @@ Public Class EveGate
         Me.Parent.GetWebView().Update()
         helperSS("movedlabel.png")
         PauseUntilFinished()
+        PreventRaceCondition()
 
         'set them to red!
         Me.Parent.GetWebView().Source = New Uri("https://gate.eveonline.com/Contacts/Index/Neutral")
@@ -178,6 +189,7 @@ Public Class EveGate
         Me.Parent.GetWebView().Update()
         PauseUntilFinished()
         helperSS("settingstandingafterlabelsubmitted.png")
+        PreventRaceCondition()
 
         Return True
 
