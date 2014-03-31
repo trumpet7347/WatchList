@@ -107,11 +107,9 @@ Public Class EveGate
         Parent.ToolStripStatusLabel2.Text = "Adding contact " & CharacterName
         Me.Parent.GetWebView().Source = New Uri("https://gate.eveonline.com/Profile/" & CharacterName) ' System.Web.HttpUtility.UrlEncode(CharacterName)
         Debug.Print("https://gate.eveonline.com/Profile/" & CharacterName)
-
+        Me.Parent.GetWebView().Update()
         PauseUntilFinished()
 
-        Me.Parent.GetWebView().Update()
-        helperSS("contact.png")
 
         Dim test = Me.Parent.GetWebView().ExecuteJavascriptWithResult(helperClick("#addContact") & "document.getElementById('addContactPopUp').setAttribute('style', ''); " & helperClick("#divStanding0 img") & helperClick("#addToWatchlist") & helperClick("#addContactButton img"))
         Do Until Me.Parent.GetWebView().IsDocumentReady And Me.Parent.GetWebView().IsLoading = False And Me.Parent.GetWebView().IsNavigating = False
@@ -120,13 +118,13 @@ Public Class EveGate
             Me.Parent.GetWebView().Update()
         Loop
 
-        Debug.Print(helperClick("#addContact") & "document.getElementById('addContactPopUp').setAttribute('style', ''); " & helperClick("#divStanding0 img") & helperClick("#addToWatchlist") & helperClick("#addContactButton img"))
+        'Debug.Print(helperClick("#addContact") & "document.getElementById('addContactPopUp').setAttribute('style', ''); " & helperClick("#divStanding0 img") & helperClick("#addToWatchlist") & helperClick("#addContactButton img"))
         Me.Parent.GetWebView().Update()
 
         helperSS("contact-ADDING.png")
 
 
-        Debug.Print(Me.Parent.GetWebView().Source.ToString)
+        'Debug.Print(Me.Parent.GetWebView().Source.ToString)
         Parent.ToolStripStatusLabel2.Text = "Added contact " & CharacterName
         Return navigated
 
@@ -145,6 +143,7 @@ Public Class EveGate
             Return False
         End If
 
+        PauseUntilFinished()
         Me.Parent.GetWebView().Source = New Uri("https://gate.eveonline.com/Contacts/Index/Neutral")
         PauseUntilFinished()
 
@@ -195,7 +194,8 @@ Public Class EveGate
         Me.Parent.GetWebView().Update()
         helperSS("createdlabel.png")
         PauseUntilFinished()
-
+        Me.Parent.GetWebView().Source = New Uri("https://gate.eveonline.com/Contacts")
+        PauseUntilFinished()
         Dim result As Awesomium.Core.JSValue
         result = Me.Parent.GetWebView().ExecuteJavascriptWithResult("var LabelID = 0; $('.labelListContainer').each( function(){ var id = $(this).attr('id'); var text = $(this).find('a > span').text();  if(text.split(' (')[0] == '" & label & "') LabelID = id;  } ) ; LabelID.replace(/[a-z]+/, '');")
         Debug.Print(result.ToString)
@@ -229,6 +229,7 @@ Public Class EveGate
     End Function
 
     Private Sub helperSS(name As String)
+        Exit Sub
         Try
             Dim surface As BitmapSurface = CType(Me.Parent.GetWebView().Surface, BitmapSurface)
             surface.SaveToPNG(name, True)

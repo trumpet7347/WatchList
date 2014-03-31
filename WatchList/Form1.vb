@@ -109,7 +109,7 @@
             i = i + 1
             EveGateHandler.AddContact(member.Text)
             MembersList.Items.Item(member.Index).ImageIndex = 0
-            If i > 10 Then
+            If i >= 10 Then
                 i = 0
                 EveGateHandler.ApplyLabelToNeutrals(Me.ContactLabel)
             End If
@@ -129,6 +129,25 @@ cancel:
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
 
         FormAbout.ShowDialog()
+
+    End Sub
+
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+        TabControl1.SelectTab(1)
+    End Sub
+
+    Private Sub WebControl1_AddressChanged(sender As Object, e As Awesomium.Core.UrlEventArgs) Handles WebControl1.AddressChanged
+        Debug.Print("Changed to " & WebControl1.Source.ToString)
+        If WebControl1.Source.ToString = "https://login.eveonline.com/" Then
+            If MessageBox.Show("It seems you might have just logged in." & vbCrLf & "Select character now?", "Select Character", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+                WebControl1.Source = New Uri("https://gate.eveonline.com/LogOn/CharacterSelection")
+            Else
+                WebControl1.Source = New Uri("https://gate.eveonline.com/Contacts")
+            End If
+        End If
+    End Sub
+
+    Private Sub Awesomium_Windows_Forms_WebControl_ShowCreatedWebView(sender As Object, e As Awesomium.Core.ShowCreatedWebViewEventArgs) Handles WebControl1.ShowCreatedWebView
 
     End Sub
 End Class

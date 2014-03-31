@@ -52,7 +52,7 @@ Partial Class FormAbout
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(12, 73)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(438, 143)
+        Me.Label2.Size = New System.Drawing.Size(438, 156)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = resources.GetString("Label2.Text")
         '

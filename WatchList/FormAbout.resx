@@ -122,12 +122,13 @@
 
 Please note that this version is experimental. EXPECT there to be bugs!
 
-The AUTOMATED BROWSER tab is visible for you to view what's going on.
+The EVE Gate tab is visible for you to view what's going on.
 While automation is occuring, you should not interfere by interacting with the Browser frame!
 
 Known issues: 
 
-Sometimes it takes two or more attempts to LogIn. 
+Sometimes shit happens and a Contact is NOT added to Contacts even though 
+they get a Blue Checkmark! I'm investigating this.
 
 </value>
   </data>

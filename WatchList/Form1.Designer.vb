@@ -24,15 +24,23 @@ Partial Class WatchList
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(WatchList))
+        Dim WebPreferences1 As Awesomium.Core.WebPreferences = New Awesomium.Core.WebPreferences(True)
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.LabelLoggedIn = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TextPass = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TextUser = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.AddressBox1 = New Awesomium.Windows.Forms.AddressBox()
+        Me.WebControl1 = New Awesomium.Windows.Forms.WebControl(Me.components)
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.lblContactLabel = New System.Windows.Forms.Label()
         Me.btnAddAll = New System.Windows.Forms.Button()
         Me.MembersList = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -51,23 +59,20 @@ Partial Class WatchList
         Me.TestToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.lblContactLabel = New System.Windows.Forms.Label()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.WebControl1 = New Awesomium.Windows.Forms.WebControl(Me.components)
-        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.WebSessionProvider1 = New Awesomium.Windows.Forms.WebSessionProvider(Me.components)
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
+        Me.TabPage3.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
-        Me.TabPage3.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Controls.Add(Me.TabPage3)
+        Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.HotTrack = True
         Me.TabControl1.Location = New System.Drawing.Point(12, 27)
         Me.TabControl1.Name = "TabControl1"
@@ -77,6 +82,8 @@ Partial Class WatchList
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Button2)
+        Me.TabPage1.Controls.Add(Me.Label4)
         Me.TabPage1.Controls.Add(Me.LabelLoggedIn)
         Me.TabPage1.Controls.Add(Me.Button1)
         Me.TabPage1.Controls.Add(Me.TextPass)
@@ -88,8 +95,27 @@ Partial Class WatchList
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage1.Size = New System.Drawing.Size(581, 390)
         Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "EVE Gate"
+        Me.TabPage1.Text = "Help"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(431, 214)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(118, 22)
+        Me.Button2.TabIndex = 7
+        Me.Button2.Text = "Continue..."
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(54, 156)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(496, 39)
+        Me.Label4.TabIndex = 6
+        Me.Label4.Text = "Please login to EVE Gate in the EVE Gate tab. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "After you've logged, please sel" & _
+    "ect the character whose Contacts you'd like to update." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'LabelLoggedIn
         '
@@ -100,6 +126,7 @@ Partial Class WatchList
         Me.LabelLoggedIn.Size = New System.Drawing.Size(78, 15)
         Me.LabelLoggedIn.TabIndex = 5
         Me.LabelLoggedIn.Text = "Please login:"
+        Me.LabelLoggedIn.Visible = False
         '
         'Button1
         '
@@ -109,6 +136,7 @@ Partial Class WatchList
         Me.Button1.TabIndex = 4
         Me.Button1.Text = "Login"
         Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
         'TextPass
         '
@@ -117,6 +145,7 @@ Partial Class WatchList
         Me.TextPass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.TextPass.Size = New System.Drawing.Size(201, 21)
         Me.TextPass.TabIndex = 3
+        Me.TextPass.Visible = False
         '
         'Label2
         '
@@ -126,6 +155,7 @@ Partial Class WatchList
         Me.Label2.Size = New System.Drawing.Size(38, 13)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Pass:"
+        Me.Label2.Visible = False
         '
         'TextUser
         '
@@ -133,6 +163,7 @@ Partial Class WatchList
         Me.TextUser.Name = "TextUser"
         Me.TextUser.Size = New System.Drawing.Size(201, 21)
         Me.TextUser.TabIndex = 1
+        Me.TextUser.Visible = False
         '
         'Label1
         '
@@ -142,6 +173,37 @@ Partial Class WatchList
         Me.Label1.Size = New System.Drawing.Size(38, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "User:"
+        Me.Label1.Visible = False
+        '
+        'TabPage3
+        '
+        Me.TabPage3.Controls.Add(Me.AddressBox1)
+        Me.TabPage3.Controls.Add(Me.WebControl1)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Size = New System.Drawing.Size(581, 390)
+        Me.TabPage3.TabIndex = 2
+        Me.TabPage3.Text = "EVE Gate"
+        Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'AddressBox1
+        '
+        Me.AddressBox1.AcceptsReturn = True
+        Me.AddressBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.AddressBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
+        Me.AddressBox1.Location = New System.Drawing.Point(1, 3)
+        Me.AddressBox1.Name = "AddressBox1"
+        Me.AddressBox1.Size = New System.Drawing.Size(577, 21)
+        Me.AddressBox1.TabIndex = 1
+        Me.AddressBox1.URL = Nothing
+        Me.AddressBox1.WebControl = Me.WebControl1
+        '
+        'WebControl1
+        '
+        Me.WebControl1.Location = New System.Drawing.Point(3, 30)
+        Me.WebControl1.Size = New System.Drawing.Size(575, 357)
+        Me.WebControl1.Source = New System.Uri("https://login.eveonline.com/Account/LogOn", System.UriKind.Absolute)
+        Me.WebControl1.TabIndex = 0
         '
         'TabPage2
         '
@@ -161,6 +223,25 @@ Partial Class WatchList
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Watch List"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'btnCancel
+        '
+        Me.btnCancel.Enabled = False
+        Me.btnCancel.Location = New System.Drawing.Point(335, 347)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(104, 24)
+        Me.btnCancel.TabIndex = 8
+        Me.btnCancel.Text = "Cancel"
+        Me.btnCancel.UseVisualStyleBackColor = True
+        '
+        'lblContactLabel
+        '
+        Me.lblContactLabel.AutoSize = True
+        Me.lblContactLabel.Location = New System.Drawing.Point(10, 353)
+        Me.lblContactLabel.Name = "lblContactLabel"
+        Me.lblContactLabel.Size = New System.Drawing.Size(90, 13)
+        Me.lblContactLabel.TabIndex = 7
+        Me.lblContactLabel.Text = "Contact Label:"
         '
         'btnAddAll
         '
@@ -266,14 +347,13 @@ Partial Class WatchList
         'ToolStripStatusLabel2
         '
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(82, 17)
-        Me.ToolStripStatusLabel2.Text = "Please log in..."
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(0, 17)
         '
         'ToolStripStatusLabel1
         '
         Me.ToolStripStatusLabel1.AutoSize = False
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(414, 17)
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(465, 17)
         Me.ToolStripStatusLabel1.Spring = True
         Me.ToolStripStatusLabel1.Text = "Ready..."
         '
@@ -307,43 +387,15 @@ Partial Class WatchList
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
-        'lblContactLabel
+        'WebSessionProvider1
         '
-        Me.lblContactLabel.AutoSize = True
-        Me.lblContactLabel.Location = New System.Drawing.Point(10, 353)
-        Me.lblContactLabel.Name = "lblContactLabel"
-        Me.lblContactLabel.Size = New System.Drawing.Size(90, 13)
-        Me.lblContactLabel.TabIndex = 7
-        Me.lblContactLabel.Text = "Contact Label:"
-        '
-        'TabPage3
-        '
-        Me.TabPage3.Controls.Add(Me.WebControl1)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(581, 390)
-        Me.TabPage3.TabIndex = 2
-        Me.TabPage3.Text = "Automated Browser"
-        Me.TabPage3.UseVisualStyleBackColor = True
-        '
-        'WebControl1
-        '
-        Me.WebControl1.Location = New System.Drawing.Point(3, 3)
-        Me.WebControl1.Size = New System.Drawing.Size(575, 384)
-        Me.WebControl1.TabIndex = 0
-        '
-        'btnCancel
-        '
-        Me.btnCancel.Enabled = False
-        Me.btnCancel.Location = New System.Drawing.Point(335, 347)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(104, 24)
-        Me.btnCancel.TabIndex = 8
-        Me.btnCancel.Text = "Cancel"
-        Me.btnCancel.UseVisualStyleBackColor = True
+        WebPreferences1.LoadImagesAutomatically = False
+        WebPreferences1.RemoteFonts = False
+        Me.WebSessionProvider1.Preferences = WebPreferences1
+        Me.WebSessionProvider1.Views.Add(Me.WebControl1)
         '
         'WatchList
         '
@@ -364,13 +416,14 @@ Partial Class WatchList
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
+        Me.TabPage3.ResumeLayout(False)
+        Me.TabPage3.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
-        Me.TabPage3.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -419,4 +472,8 @@ Partial Class WatchList
     Friend WithEvents TabPage3 As System.Windows.Forms.TabPage
     Public WithEvents WebControl1 As Awesomium.Windows.Forms.WebControl
     Friend WithEvents btnCancel As System.Windows.Forms.Button
+    Friend WithEvents WebSessionProvider1 As Awesomium.Windows.Forms.WebSessionProvider
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents AddressBox1 As Awesomium.Windows.Forms.AddressBox
 End Class
