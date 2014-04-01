@@ -49,8 +49,8 @@ Partial Class WatchList
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextEntityName = New System.Windows.Forms.TextBox()
         Me.ComboType = New System.Windows.Forms.ComboBox()
-        Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
-        Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
+        '        Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        '        Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -440,8 +440,8 @@ Partial Class WatchList
     Friend WithEvents ToolStripStatusLabel2 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents btnAddAll As System.Windows.Forms.Button
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
-    Private WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
-    Private WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
+    'Private WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
+    ' Private WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
     Friend WithEvents ImageList1 As System.Windows.Forms.ImageList
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
     Friend WithEvents HelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
