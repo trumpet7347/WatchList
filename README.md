@@ -5,12 +5,11 @@ EVE Online WatchList Tool for War Targets
 
 ==
 
-WatchList 1.0.0.9 [Setup] - https://www.dropbox.com/s/z7afeo8awmjlsp6/WatchList.zip
+WatchList 1.0.0.11 [Setup] - https://www.dropbox.com/s/b91jrq1lrs45pmt/WatchList-1.0.0.11.exe
 
 
-PLEASE UNINSTALL OLDER VERSION BEFORE TRYING TO INSTALL THIS ONE.
+WARNING: To use this tool effectively you must not have any characters/corps/alliances set to Neutral; This tool adds entities to neutral then batch applies the new label and standing to all Neutral entities. If you already have entities set to neutral they will be modified.
 
-I'll create a real installer soon to get rid of this ClickOnce Setup garbage.
 
 
 ==
