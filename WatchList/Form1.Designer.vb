@@ -24,7 +24,7 @@ Partial Class WatchList
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(WatchList))
-        Dim WebPreferences2 As Awesomium.Core.WebPreferences = New Awesomium.Core.WebPreferences(True)
+        Dim WebPreferences1 As Awesomium.Core.WebPreferences = New Awesomium.Core.WebPreferences(True)
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -380,14 +380,13 @@ Partial Class WatchList
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'WebSessionProvider1
         '
-        WebPreferences2.LoadImagesAutomatically = False
-        WebPreferences2.RemoteFonts = False
-        Me.WebSessionProvider1.Preferences = WebPreferences2
+        WebPreferences1.RemoteFonts = False
+        Me.WebSessionProvider1.Preferences = WebPreferences1
         Me.WebSessionProvider1.Views.Add(Me.WebControl1)
         '
         'WatchList
