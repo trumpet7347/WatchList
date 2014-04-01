@@ -27,6 +27,7 @@ Partial Class WatchList
         Dim WebPreferences1 As Awesomium.Core.WebPreferences = New Awesomium.Core.WebPreferences(True)
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.LabelLoggedIn = New System.Windows.Forms.Label()
@@ -49,16 +50,14 @@ Partial Class WatchList
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextEntityName = New System.Windows.Forms.TextBox()
         Me.ComboType = New System.Windows.Forms.ComboBox()
-        Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
-        Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.WebSessionProvider1 = New Awesomium.Windows.Forms.WebSessionProvider(Me.components)
+        Me.lblCharactersCount = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
@@ -69,6 +68,9 @@ Partial Class WatchList
         '
         'TabControl1
         '
+        Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage3)
         Me.TabControl1.Controls.Add(Me.TabPage2)
@@ -81,6 +83,7 @@ Partial Class WatchList
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Label5)
         Me.TabPage1.Controls.Add(Me.Button2)
         Me.TabPage1.Controls.Add(Me.Label4)
         Me.TabPage1.Controls.Add(Me.LabelLoggedIn)
@@ -97,9 +100,19 @@ Partial Class WatchList
         Me.TabPage1.Text = "Help"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(34, 176)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(495, 65)
+        Me.Label5.TabIndex = 8
+        Me.Label5.Text = resources.GetString("Label5.Text")
+        '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(431, 214)
+        Me.Button2.Location = New System.Drawing.Point(412, 276)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(118, 22)
         Me.Button2.TabIndex = 7
@@ -109,12 +122,13 @@ Partial Class WatchList
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(54, 156)
+        Me.Label4.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(34, 115)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(496, 39)
+        Me.Label4.Size = New System.Drawing.Size(367, 39)
         Me.Label4.TabIndex = 6
-        Me.Label4.Text = "Please login to EVE Gate in the EVE Gate tab. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "After you've logged, please sel" & _
-    "ect the character whose Contacts you'd like to update." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Label4.Text = "Please login to EVE Gate in the EVE Gate tab. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Then select the character whose" & _
+    " Contacts you'd like to update." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'LabelLoggedIn
         '
@@ -188,6 +202,8 @@ Partial Class WatchList
         'AddressBox1
         '
         Me.AddressBox1.AcceptsReturn = True
+        Me.AddressBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.AddressBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.AddressBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
         Me.AddressBox1.Location = New System.Drawing.Point(1, 3)
@@ -199,6 +215,9 @@ Partial Class WatchList
         '
         'WebControl1
         '
+        Me.WebControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.WebControl1.Location = New System.Drawing.Point(3, 30)
         Me.WebControl1.Size = New System.Drawing.Size(575, 357)
         Me.WebControl1.Source = New System.Uri("https://login.eveonline.com/Account/LogOn", System.UriKind.Absolute)
@@ -206,6 +225,7 @@ Partial Class WatchList
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.lblCharactersCount)
         Me.TabPage2.Controls.Add(Me.btnCancel)
         Me.TabPage2.Controls.Add(Me.lblContactLabel)
         Me.TabPage2.Controls.Add(Me.btnAddAll)
@@ -214,7 +234,6 @@ Partial Class WatchList
         Me.TabPage2.Controls.Add(Me.Label3)
         Me.TabPage2.Controls.Add(Me.TextEntityName)
         Me.TabPage2.Controls.Add(Me.ComboType)
-        Me.TabPage2.Controls.Add(Me.ShapeContainer1)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(10)
@@ -225,6 +244,7 @@ Partial Class WatchList
         '
         'btnCancel
         '
+        Me.btnCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCancel.Enabled = False
         Me.btnCancel.Location = New System.Drawing.Point(335, 347)
         Me.btnCancel.Name = "btnCancel"
@@ -235,6 +255,7 @@ Partial Class WatchList
         '
         'lblContactLabel
         '
+        Me.lblContactLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblContactLabel.AutoSize = True
         Me.lblContactLabel.Location = New System.Drawing.Point(10, 353)
         Me.lblContactLabel.Name = "lblContactLabel"
@@ -244,6 +265,7 @@ Partial Class WatchList
         '
         'btnAddAll
         '
+        Me.btnAddAll.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnAddAll.Location = New System.Drawing.Point(445, 345)
         Me.btnAddAll.Name = "btnAddAll"
         Me.btnAddAll.Size = New System.Drawing.Size(115, 28)
@@ -253,6 +275,9 @@ Partial Class WatchList
         '
         'MembersList
         '
+        Me.MembersList.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.MembersList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1})
         Me.MembersList.FullRowSelect = True
         Me.MembersList.GridLines = True
@@ -278,6 +303,7 @@ Partial Class WatchList
         '
         'ButtonLookup
         '
+        Me.ButtonLookup.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ButtonLookup.Location = New System.Drawing.Point(458, 26)
         Me.ButtonLookup.Name = "ButtonLookup"
         Me.ButtonLookup.Size = New System.Drawing.Size(101, 27)
@@ -288,7 +314,7 @@ Partial Class WatchList
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(13, 33)
+        Me.Label3.Location = New System.Drawing.Point(10, 33)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(89, 13)
         Me.Label3.TabIndex = 2
@@ -296,9 +322,11 @@ Partial Class WatchList
         '
         'TextEntityName
         '
+        Me.TextEntityName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextEntityName.Location = New System.Drawing.Point(225, 30)
         Me.TextEntityName.Name = "TextEntityName"
-        Me.TextEntityName.Size = New System.Drawing.Size(217, 21)
+        Me.TextEntityName.Size = New System.Drawing.Size(227, 21)
         Me.TextEntityName.TabIndex = 1
         '
         'ComboType
@@ -311,26 +339,6 @@ Partial Class WatchList
         Me.ComboType.Size = New System.Drawing.Size(111, 21)
         Me.ComboType.Sorted = True
         Me.ComboType.TabIndex = 0
-        '
-        'ShapeContainer1
-        '
-        Me.ShapeContainer1.Location = New System.Drawing.Point(10, 10)
-        Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
-        Me.ShapeContainer1.Name = "ShapeContainer1"
-        Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.LineShape1})
-        Me.ShapeContainer1.Size = New System.Drawing.Size(561, 370)
-        Me.ShapeContainer1.TabIndex = 4
-        Me.ShapeContainer1.TabStop = False
-        '
-        'LineShape1
-        '
-        Me.LineShape1.BorderColor = System.Drawing.SystemColors.AppWorkspace
-        Me.LineShape1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dot
-        Me.LineShape1.Name = "LineShape1"
-        Me.LineShape1.X1 = 5
-        Me.LineShape1.X2 = 546
-        Me.LineShape1.Y1 = 60
-        Me.LineShape1.Y2 = 60
         '
         'StatusStrip1
         '
@@ -372,22 +380,24 @@ Partial Class WatchList
         '
         'HelpToolStripMenuItem
         '
-        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
-        Me.HelpToolStripMenuItem.Text = "Help"
-        '
-        'AboutToolStripMenuItem
-        '
-        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
-        Me.AboutToolStripMenuItem.Text = "About"
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(52, 20)
+        Me.HelpToolStripMenuItem.Text = "About"
         '
         'WebSessionProvider1
         '
         WebPreferences1.RemoteFonts = False
         Me.WebSessionProvider1.Preferences = WebPreferences1
         Me.WebSessionProvider1.Views.Add(Me.WebControl1)
+        '
+        'lblCharactersCount
+        '
+        Me.lblCharactersCount.AutoSize = True
+        Me.lblCharactersCount.Location = New System.Drawing.Point(10, 69)
+        Me.lblCharactersCount.Name = "lblCharactersCount"
+        Me.lblCharactersCount.Size = New System.Drawing.Size(112, 13)
+        Me.lblCharactersCount.TabIndex = 9
+        Me.lblCharactersCount.Text = "0 characters in list"
         '
         'WatchList
         '
@@ -398,11 +408,9 @@ Partial Class WatchList
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.TabControl1)
         Me.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.MaximizeBox = False
+        Me.MinimumSize = New System.Drawing.Size(629, 520)
         Me.Name = "WatchList"
-        Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "WatchList"
         Me.TabControl1.ResumeLayout(False)
@@ -440,12 +448,11 @@ Partial Class WatchList
     Friend WithEvents ToolStripStatusLabel2 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents btnAddAll As System.Windows.Forms.Button
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
-    Private WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
-    Private WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
+    'Private WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
+    'Private WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
     Friend WithEvents ImageList1 As System.Windows.Forms.ImageList
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
     Friend WithEvents HelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
     Protected Overrides Sub Finalize()
         MyBase.Finalize()
@@ -467,4 +474,6 @@ Partial Class WatchList
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents AddressBox1 As Awesomium.Windows.Forms.AddressBox
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents lblCharactersCount As System.Windows.Forms.Label
 End Class
