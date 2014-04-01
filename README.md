@@ -5,7 +5,7 @@ EVE Online WatchList Tool for War Targets
 
 ==
 
-WatchList 1.0.0.9 [Setup] - https://docs.google.com/file/d/0B_hdE0gfmuoqYzUtektTbF9QZk0/edit
+WatchList 1.0.0.9 [Setup] - https://drive.google.com/file/d/0B_hdE0gfmuoqVkw5M3ZnMHVqczA/edit?usp=sharing
 
 
 
