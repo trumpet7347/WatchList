@@ -5,10 +5,7 @@ EVE Online WatchList Tool for War Targets
 
 ==
 
-WatchList 1.0.0.7 [Setup] - https://docs.google.com/file/d/0B_hdE0gfmuoqZFViMk1IMllIckk/edit
-- Added Throttling to Improve Accuracy greatly! 10 tests resulted in 100% accuracy!
-
-
+WatchList 1.0.0.9 [Setup] - https://docs.google.com/file/d/0B_hdE0gfmuoqYzUtektTbF9QZk0/edit
 
 
 
