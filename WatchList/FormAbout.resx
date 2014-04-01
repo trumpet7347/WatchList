@@ -117,19 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Label2.Text" xml:space="preserve">
-    <value>-BETA VERSION-
-
-Please note that this version is experimental. EXPECT there to be bugs!
-
-The EVE Gate tab is visible for you to view what's going on.
-While automation is occuring, you should not interfere by interacting with the Browser frame!
-
-Known issues: 
-
-Sometimes shit happens and a Contact is NOT added to Contacts even though 
-they get a Blue Checkmark! I'm investigating this.
-
-</value>
-  </data>
 </root>

@@ -50,12 +50,14 @@
 
 
         Try
-
+            lblCharactersCount.Text = "0 characters in list"
             MembersList.Items.Clear()
 
             For Each Member As Object In CurrentEntity.Members
                 MembersList.Items.Add(Member("name"))
             Next
+
+            lblCharactersCount.Text = MembersList.Items.Count & " characters in list"
 
 
 
@@ -130,11 +132,6 @@ cancel:
         CancellingOperation = True
     End Sub
 
-    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
-
-        FormAbout.ShowDialog()
-
-    End Sub
 
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
         TabControl1.SelectTab(1)
@@ -146,12 +143,24 @@ cancel:
             If MessageBox.Show("It seems you might have just logged in." & vbCrLf & "Select character now?", "Select Character", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
                 WebControl1.Source = New Uri("https://gate.eveonline.com/LogOn/CharacterSelection")
             Else
-                WebControl1.Source = New Uri("https://gate.eveonline.com/Contacts")
+                TabControl1.SelectTab(2)
             End If
         End If
     End Sub
 
     Private Sub Awesomium_Windows_Forms_WebControl_ShowCreatedWebView(sender As Object, e As Awesomium.Core.ShowCreatedWebViewEventArgs) Handles WebControl1.ShowCreatedWebView
 
+    End Sub
+
+    Private Sub TextEntityName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextEntityName.KeyPress
+
+        If e.KeyChar.GetHashCode = 851981 Then
+            ButtonLookup.PerformClick()
+        End If
+
+    End Sub
+
+    Private Sub HelpToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HelpToolStripMenuItem.Click
+        FormAbout.ShowDialog()
     End Sub
 End Class

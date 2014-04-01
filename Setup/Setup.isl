@@ -3758,7 +3758,7 @@
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>170045601</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>170045601</td></row>
 		<row><td>ID_STRING1</td><td>1033</td><td/><td>0</td><td/><td>170045601</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>http://www.Roriii.com</td><td>0</td><td/><td>170014988</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>https://github.com/alexrs84/WatchList</td><td>0</td><td/><td>170046736</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>Roriii</td><td>0</td><td/><td>170014988</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>WatchList</td><td>0</td><td/><td>170058017</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>170045601</td></row>
@@ -4381,7 +4381,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGRAMFILETOLAUNCHATEND</td><td>[INSTALLDIR]WatchList.Primary output</td><td/></row>
 		<row><td>ProductCode</td><td>{EE7AF457-4FEF-4D43-9157-0AA5A38E700F}</td><td/></row>
 		<row><td>ProductName</td><td>WatchList</td><td/></row>
-		<row><td>ProductVersion</td><td>1.0.0.11</td><td/></row>
+		<row><td>ProductVersion</td><td>1.0.0.12</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
 		<row><td>ProgressType2</td><td>installed</td><td/></row>
@@ -4397,7 +4397,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR;DOTNETVERSION45FULL</td><td/></row>
 		<row><td>SelectedSetupType</td><td>##IDS__DisplayName_Typical##</td><td/></row>
 		<row><td>SetupType</td><td>Typical</td><td/></row>
-		<row><td>UpgradeCode</td><td>{8CB48E2D-4CF8-4384-955D-4BE5962A78E6}</td><td/></row>
+		<row><td>UpgradeCode</td><td>{6D3BF3DA-8DAD-4C3E-9483-F6A7BFF43FDE}</td><td/></row>
 		<row><td>_IsMaintenance</td><td>Change</td><td/></row>
 		<row><td>_IsSetupTypeMin</td><td>Typical</td><td/></row>
 	</table>

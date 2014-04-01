@@ -153,9 +153,14 @@ Public Class EveGate
             Return False
         End If
 
+
+        Parent.ToolStripStatusLabel2.Text = "Applying lable to Neutrals"
+
         PauseUntilFinished()
         Me.Parent.GetWebView().Source = New Uri("https://gate.eveonline.com/Contacts/Index/Neutral")
         PauseUntilFinished()
+
+        Parent.ToolStripStatusLabel2.Text = "Applying lable to Neutrals"
 
         Me.Parent.GetWebView().ExecuteJavascript("" & _
             helperClick("#checkBoxCheckAll") & _
@@ -175,6 +180,7 @@ Public Class EveGate
         PreventRaceCondition()
 
         'set them to red!
+        Parent.ToolStripStatusLabel2.Text = "Setting all Neutrals to Terrible"
         Me.Parent.GetWebView().Source = New Uri("https://gate.eveonline.com/Contacts/Index/Neutral")
         PauseUntilFinished()
         Me.Parent.GetWebView().ExecuteJavascript("" & _
@@ -196,6 +202,7 @@ Public Class EveGate
     End Function
 
     Private Function CreateLabel(label As String) As String
+        Parent.ToolStripStatusLabel2.Text = "Creating label"
         Me.Parent.GetWebView().Source = New Uri("https://gate.eveonline.com/Contacts")
         PauseUntilFinished()
         Me.Parent.GetWebView().ExecuteJavascript("" & _
