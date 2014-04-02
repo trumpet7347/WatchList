@@ -18,6 +18,10 @@
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles ButtonLookup.Click
 
+        lblContactLabel.Text = "Contact Label: " & Me.ContactLabel
+        txtUpdateLabel.Visible = False
+        btnUpdateLabel.Visible = False
+
         ToolStripStatusLabel1.Text = "Looking up entity..."
         Me.ButtonLookup.Enabled = False
         If ComboType.GetItemText(ComboType.SelectedItem) = "Corporation" Then
@@ -87,6 +91,12 @@
 
     Private Sub MembersList_DoubleClick(sender As Object, e As EventArgs) Handles MembersList.DoubleClick
         'TabControl1.SelectTab(2)
+
+        lblContactLabel.Text = "Contact Label: " & Me.ContactLabel
+        txtUpdateLabel.Visible = False
+        btnUpdateLabel.Visible = False
+
+
         EveGateHandler.CreatedLabelID = ""
         Debug.Print(MembersList.SelectedItems.Item(0).Text)
         EveGateHandler.AddContact(MembersList.SelectedItems.Item(0).Text)
@@ -97,6 +107,11 @@
 
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnAddAll.Click
+
+        lblContactLabel.Text = "Contact Label: " & Me.ContactLabel
+        txtUpdateLabel.Visible = False
+        btnUpdateLabel.Visible = False
+
         CancellingOperation = False
         btnAddAll.Enabled = False
         btnCancel.Enabled = True
@@ -163,4 +178,31 @@ cancel:
     Private Sub HelpToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HelpToolStripMenuItem.Click
         FormAbout.ShowDialog()
     End Sub
+
+    Private Sub lblContactLabel_Click(sender As Object, e As EventArgs) Handles lblContactLabel.Click
+        btnUpdateLabel.Visible = True
+        txtUpdateLabel.Text = Me.ContactLabel
+        txtUpdateLabel.Visible = True
+        lblContactLabel.Text = "Contact Label:"
+    End Sub
+
+
+
+    Private Sub btnUpdateLabel_Click(sender As Object, e As EventArgs) Handles btnUpdateLabel.Click
+        Dim newLabel As String = System.Text.RegularExpressions.Regex.Replace(Trim(txtUpdateLabel.Text), "[^a-zA-Z0-9 \.\-]", "")
+
+        If newLabel.Length > 1 Then
+            Me.ContactLabel = newLabel
+            lblContactLabel.Text = "Contact Label: " & Me.ContactLabel
+            txtUpdateLabel.Visible = False
+            btnUpdateLabel.Visible = False
+        End If
+    End Sub
+
+    Private Sub txtUpdateLabel_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtUpdateLabel.KeyPress
+        If e.KeyChar.GetHashCode = 851981 Then
+            btnUpdateLabel.PerformClick()
+        End If
+    End Sub
+
 End Class

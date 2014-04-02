@@ -40,6 +40,9 @@ Partial Class WatchList
         Me.AddressBox1 = New Awesomium.Windows.Forms.AddressBox()
         Me.WebControl1 = New Awesomium.Windows.Forms.WebControl(Me.components)
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.btnUpdateLabel = New System.Windows.Forms.Button()
+        Me.txtUpdateLabel = New System.Windows.Forms.TextBox()
+        Me.lblCharactersCount = New System.Windows.Forms.Label()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.lblContactLabel = New System.Windows.Forms.Label()
         Me.btnAddAll = New System.Windows.Forms.Button()
@@ -57,7 +60,6 @@ Partial Class WatchList
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.WebSessionProvider1 = New Awesomium.Windows.Forms.WebSessionProvider(Me.components)
-        Me.lblCharactersCount = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
@@ -225,6 +227,8 @@ Partial Class WatchList
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.btnUpdateLabel)
+        Me.TabPage2.Controls.Add(Me.txtUpdateLabel)
         Me.TabPage2.Controls.Add(Me.lblCharactersCount)
         Me.TabPage2.Controls.Add(Me.btnCancel)
         Me.TabPage2.Controls.Add(Me.lblContactLabel)
@@ -242,6 +246,33 @@ Partial Class WatchList
         Me.TabPage2.Text = "Watch List"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
+        'btnUpdateLabel
+        '
+        Me.btnUpdateLabel.Location = New System.Drawing.Point(229, 345)
+        Me.btnUpdateLabel.Name = "btnUpdateLabel"
+        Me.btnUpdateLabel.Size = New System.Drawing.Size(43, 28)
+        Me.btnUpdateLabel.TabIndex = 11
+        Me.btnUpdateLabel.Text = "OK"
+        Me.btnUpdateLabel.UseVisualStyleBackColor = True
+        Me.btnUpdateLabel.Visible = False
+        '
+        'txtUpdateLabel
+        '
+        Me.txtUpdateLabel.Location = New System.Drawing.Point(103, 348)
+        Me.txtUpdateLabel.Name = "txtUpdateLabel"
+        Me.txtUpdateLabel.Size = New System.Drawing.Size(118, 21)
+        Me.txtUpdateLabel.TabIndex = 10
+        Me.txtUpdateLabel.Visible = False
+        '
+        'lblCharactersCount
+        '
+        Me.lblCharactersCount.AutoSize = True
+        Me.lblCharactersCount.Location = New System.Drawing.Point(10, 69)
+        Me.lblCharactersCount.Name = "lblCharactersCount"
+        Me.lblCharactersCount.Size = New System.Drawing.Size(112, 13)
+        Me.lblCharactersCount.TabIndex = 9
+        Me.lblCharactersCount.Text = "0 characters in list"
+        '
         'btnCancel
         '
         Me.btnCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -257,6 +288,8 @@ Partial Class WatchList
         '
         Me.lblContactLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblContactLabel.AutoSize = True
+        Me.lblContactLabel.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.lblContactLabel.ForeColor = System.Drawing.SystemColors.HotTrack
         Me.lblContactLabel.Location = New System.Drawing.Point(10, 353)
         Me.lblContactLabel.Name = "lblContactLabel"
         Me.lblContactLabel.Size = New System.Drawing.Size(90, 13)
@@ -390,15 +423,6 @@ Partial Class WatchList
         Me.WebSessionProvider1.Preferences = WebPreferences1
         Me.WebSessionProvider1.Views.Add(Me.WebControl1)
         '
-        'lblCharactersCount
-        '
-        Me.lblCharactersCount.AutoSize = True
-        Me.lblCharactersCount.Location = New System.Drawing.Point(10, 69)
-        Me.lblCharactersCount.Name = "lblCharactersCount"
-        Me.lblCharactersCount.Size = New System.Drawing.Size(112, 13)
-        Me.lblCharactersCount.TabIndex = 9
-        Me.lblCharactersCount.Text = "0 characters in list"
-        '
         'WatchList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
@@ -474,4 +498,6 @@ Partial Class WatchList
     Friend WithEvents AddressBox1 As Awesomium.Windows.Forms.AddressBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents lblCharactersCount As System.Windows.Forms.Label
+    Friend WithEvents btnUpdateLabel As System.Windows.Forms.Button
+    Friend WithEvents txtUpdateLabel As System.Windows.Forms.TextBox
 End Class
