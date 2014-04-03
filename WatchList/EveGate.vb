@@ -104,13 +104,23 @@ Public Class EveGate
         Return True
     End Function
 
-    Public Function AddContact(CharacterName As String)
+    Public Function AddContact(CharacterName As String, Optional ValidateCorp As Boolean = False)
         Dim navigated As Boolean = False
         Parent.ToolStripStatusLabel2.Text = "Adding contact " & CharacterName
         Me.Parent.GetWebView().Source = New Uri("https://gate.eveonline.com/Profile/" & CharacterName) ' System.Web.HttpUtility.UrlEncode(CharacterName)
         Debug.Print("https://gate.eveonline.com/Profile/" & CharacterName)
         Me.Parent.GetWebView().Update()
         PauseUntilFinished()
+
+        '$('.col1 > div > div > div').each(function(){ alert($(this).text().match(/Sebiestor/gi)) });
+        'var matched = false; $('.col1 > div > div > div').each(function(){ if($(this).text().match(/Sebiestor/gi)) matched = true }); matched;
+        If ValidateCorp Then
+            Dim validateTest = Me.Parent.GetWebView().ExecuteJavascriptWithResult("var matched = false; $('.col1 > div > div > div').each(function(){ if($(this).text().match(/" & Me.Parent.CurrentEntity.Name & "/gi)) matched = true }); matched;")
+            Debug.Print(validateTest.ToString)
+            If validateTest.ToString = "false" Then Return False
+        End If
+
+
 
 
         Dim test = Me.Parent.GetWebView().ExecuteJavascriptWithResult(helperClick("#addContact") & "document.getElementById('addContactPopUp').setAttribute('style', ''); " & helperClick("#divStanding0 img") & helperClick("#addToWatchlist") & helperClick("#addContactButton img"))
@@ -129,7 +139,7 @@ Public Class EveGate
 
         'Debug.Print(Me.Parent.GetWebView().Source.ToString)
         Parent.ToolStripStatusLabel2.Text = "Added contact " & CharacterName
-        Return navigated
+        Return True
 
     End Function
 

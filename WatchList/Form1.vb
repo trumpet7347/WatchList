@@ -1,6 +1,6 @@
 ﻿Public Class WatchList
 
-    Private CurrentEntity As EveEntity
+    Public CurrentEntity As EveEntity
     Private EveGateHandler As EveGate
     Private ContactLabel As String
     Private CancellingOperation As Boolean
@@ -125,9 +125,14 @@
                 GoTo cancel
                 Exit For
             End If
-            i = i + 1
-            EveGateHandler.AddContact(member.Text)
-            MembersList.Items.Item(member.Index).ImageIndex = 0
+
+            If EveGateHandler.AddContact(member.Text, chkCharCorpValidate.Checked) Then
+                i = i + 1
+                MembersList.Items.Item(member.Index).ImageIndex = 0
+            Else
+                MembersList.Items.Item(member.Index).ImageIndex = 1
+            End If
+
             If i >= 10 Then
                 i = 0
                 EveGateHandler.ApplyLabelToNeutrals(Me.ContactLabel)
