@@ -248,6 +248,7 @@ Partial Class WatchList
         '
         'btnUpdateLabel
         '
+        Me.btnUpdateLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnUpdateLabel.Location = New System.Drawing.Point(229, 345)
         Me.btnUpdateLabel.Name = "btnUpdateLabel"
         Me.btnUpdateLabel.Size = New System.Drawing.Size(43, 28)
@@ -258,6 +259,7 @@ Partial Class WatchList
         '
         'txtUpdateLabel
         '
+        Me.txtUpdateLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.txtUpdateLabel.Location = New System.Drawing.Point(103, 348)
         Me.txtUpdateLabel.Name = "txtUpdateLabel"
         Me.txtUpdateLabel.Size = New System.Drawing.Size(118, 21)
