@@ -117,15 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Label5.Text" xml:space="preserve">
-    <value>NOTE: This tool sets all newly added contacts to NEUTRAL standing first before batch 
-updating their labels and standings to TERRIBLE. 
-
-If you already have contacts set to Neutral, please change them otherwise they'll 
-be modified.</value>
-  </data>
   <metadata name="TabPage3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="ContextCharacter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>529, 17</value>
   </metadata>
   <metadata name="ImageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>134, 17</value>
@@ -134,9 +130,9 @@ be modified.</value>
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACe
-        CQAAAk1TRnQBSQFMAgEBAwEAAaABAAGgAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
-        AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABa
+        CgAAAk1TRnQBSQFMAgEBBAEAAdABAAHQAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
         AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
@@ -163,21 +159,31 @@ be modified.</value>
         AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
         AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
         AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
-        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD/xcABPQB/yoAAf8B1gH/
-        DgABBwPsAf8qAAHVAcgB1g4AAQcD7AH/KAAB/wHVA8gB3Q0AAfIDvAH/CgAB/xwAAf8B5gTIAc4B9AwA
-        Af8D9AsAAf8CAAH/BQAB9AH/EQAB3QHOA8gB1gLIAc4B/wsAAQcC7AHtAf8HAAEHAQAC/wHvAQcBvAEJ
-        AgAB8QHwAQcB7BAAAd0EyAHVAf8BzgLIAdUB/woAAe8D7AH/BwAB7QEAAfQB/wG8AQcB8AHIAQAB/wEH
-        AvQB7BEAARkB5gLIAfQBAAEJA8gB1QH/CQABkgPsAfQHAAHtAQAB9AH/AgcB7AHWAgAB7wH0AZIB7BMA
-        AQkB1gMAAeYDyAHVAf8HAAH/BOwB8wcAAewBAAL0Ae8CBwEAARkB/wEHAvQBbRgAAd0EyAHOAd0GAAH0
-        BOwB8QcAAewBAAH/AfABvAHwAbwBAAHIAQAB8QH0Ae8BExkAAdYEyAHOBgAB8wTsAfAHAAH0AgAE/wEA
-        AcgBAAP/AewZAAH/AeYDyAHVBgAB8gTsAQcPAAHIBAABBxoAAf8BzgLIAdYGAAHyBOwBBw8AAcgEAAH/
-        GwAB9AHOAcgB1QYAAfIE7AEHDwAB1iEAAfQB5gHVBgAB8gTsAQcPAAH/IwABGQYAAf8F9CUAAUIBTQE+
-        BwABPgMAASgDAAFAAwABEAMAAQEBAAEBBQABgBcAA/8BAAL/AfwBHwL/AgAB+AH/AfwBHwL/AgAB+AH/
-        AfwBHwL/AgAB4AF/AfwBHwH7Af8CAAHAAT8B/AE/AfsBfAIAAYABHwH8AR8B0AEwAwABDwH8AR8B0AEg
-        AgABggEHAfwBHwHQATACAAHnAQMB+AEfAdABQAIAAf8BAQH4AR8B0AFQAgAB/wGBAfgBHwHYAVACAAH/
-        AYEB+AEfAf8B3gIAAf8BwQH4AR8B/wHeAgAB/wHhAfgBHwH/Ad8CAAH/AfEB+AEfAf8B3wIAAf8B/QH4
-        AR8C/wIACw==
+        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD//8A/wD/AP8AGwAE9AH/
+        KgAB/wHWAf8OAAEHA+wB/yoAAdUByAHWDgABBwPsAf8WAAX0Af8CAAH/BfQEAAH/AdUDyAHdDQAB8gO8
+        Af8KAAH/CwAB7wREAe8CAAHsBEQB7wMAAf8B5gTIAc4B9AwAAf8D9AsAAf8CAAH/BQAB9AH/AQAB/wES
+        BEQB8wHxBEQBEgH/AgAB3QHOA8gB1gLIAc4B/wsAAQcC7AHtAf8HAAEHAQAC/wHvAQcBvAEJAgAB8QHw
+        AQcB7AIAAfAERAHrAW0ERAHwAgAB3QTIAdUB/wHOAsgB1QH/CgAB7wPsAf8HAAHtAQAB9AH/AbwBBwHw
+        AcgBAAH/AQcC9AHsAgAB/wH4CEQB+AH/AwABGQHmAsgB9AEAAQkDyAHVAf8JAAGSA+wB9AcAAe0BAAH0
+        Af8CBwHsAdYCAAHvAfQBkgHsAwAB8whEAfMGAAEJAdYDAAHmA8gB1QH/BwAB/wTsAfMHAAHsAQAC9AHv
+        AgcBAAEZAf8BBwL0AW0EAAGSBkQBkgwAAd0EyAHOAd0GAAH0BOwB8QcAAewBAAH/AfABvAHwAbwBAAHI
+        AQAB8QH0Ae8BEwQAAZIGRAGSDQAB1gTIAc4GAAHzBOwB8AcAAfQCAAT/AQAByAEAA/8B7AMAAfMIRAHz
+        DAAB/wHmA8gB1QYAAfIE7AEHDwAByAQAAQcCAAH/AfgIRAFuAf8MAAH/Ac4CyAHWBgAB8gTsAQcPAAHI
+        BAAB/wIAAfAERAFtAewERAHwDQAB9AHOAcgB1QYAAfIE7AEHDwAB1gYAAf8BEgREAfMB9AREARIB/w0A
+        AfQB5gHVBgAB8gTsAQcPAAH/BgAB7wREAZICAAHvBEQB7w8AARkGAAH/BfQlAAFCAU0BPgcAAT4DAAEo
+        AwABQAMAASADAAEBAQABAQYAAQEWAAP/gQAC/wH8AR8E/wH4Af8B/AEfBP8B+AH/AfwBHwL/AoEB4AF/
+        AfwBHwH7Af8CgQHAAT8B/AE/AfsBfAGAAQEBgAEfAfwBHwHQATABwAEDAQABDwH8AR8B0AEgAcABAwGC
+        AQcB/AEfAdABMAHgAQcB5wEDAfgBHwHQAUAB8AEPAf8BAQH4AR8B0AFQAfABDwH/AYEB+AEfAdgBUAHg
+        AQcB/wGBAfgBHwH/Ad4BwAEDAf8BwQH4AR8B/wHeAcABAwH/AeEB+AEfAf8B3wGAAQEB/wHxAfgBHwH/
+        Ad8CgQH/Af0B+AEfBP8L
 </value>
+  </data>
+  <data name="Label5.Text" xml:space="preserve">
+    <value>NOTE: This tool sets all newly added contacts to NEUTRAL standing first before batch 
+updating their labels and standings to TERRIBLE. 
+
+If you already have contacts set to Neutral, please change them otherwise they'll 
+be modified.</value>
   </data>
   <metadata name="StatusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -188,7 +194,7 @@ be modified.</value>
   <metadata name="WebSessionProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>359, 17</value>
   </metadata>
-  <metadata name="WebPreferences2.RemoteFonts" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="WebPreferences9.RemoteFonts" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
 </root>

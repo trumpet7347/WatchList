@@ -104,6 +104,44 @@ Public Class EveGate
         Return True
     End Function
 
+
+    Public Function RemoveContact(CharacterName As String)
+        Dim navigated As Boolean = False
+        Parent.ToolStripStatusLabel2.Text = "Removing contact " & CharacterName
+        Me.Parent.GetWebView().Source = New Uri("https://gate.eveonline.com/Profile/" & CharacterName) ' System.Web.HttpUtility.UrlEncode(CharacterName)
+        Debug.Print("https://gate.eveonline.com/Profile/" & CharacterName)
+        Me.Parent.GetWebView().Update()
+        PauseUntilFinished()
+
+        'if already a contact, we'll edit. otherwise we'll add!
+        Dim IsAContact As Boolean = Me.Parent.GetWebView().ExecuteJavascriptWithResult(" " & _
+                "var matched = false; $('.profileActionsContainer .action .Col2').each(function(){ if($(this).text().match(/Edit Contact Standing/gi)) matched = true }); matched;").ToString = "true"
+
+        If IsAContact Then
+            Dim AddTest = Me.Parent.GetWebView().ExecuteJavascriptWithResult(helperClick("#deleteContact") & _
+                    "document.getElementById('deleteContactPopUp').setAttribute('style', ''); " & _
+                    helperClick("#deleteContactButton img"))
+        Else
+            Return True
+        End If
+
+
+
+        Do Until Me.Parent.GetWebView().IsDocumentReady And Me.Parent.GetWebView().IsLoading = False And Me.Parent.GetWebView().IsNavigating = False
+            navigated = True
+            Application.DoEvents()
+            Me.Parent.GetWebView().Update()
+        Loop
+
+        'Debug.Print(helperClick("#addContact") & "document.getElementById('addContactPopUp').setAttribute('style', ''); " & helperClick("#divStanding0 img") & helperClick("#addToWatchlist") & helperClick("#addContactButton img"))
+        Me.Parent.GetWebView().Update()
+
+        PauseUntilFinished()
+        PreventRaceCondition()
+
+        'Debug.Print(Me.Parent.GetWebView().Source.ToString)
+        Parent.ToolStripStatusLabel2.Text = "Removed contact " & CharacterName
+    End Function
     Public Function AddContact(CharacterName As String, Optional ValidateCorp As Boolean = False)
         Dim navigated As Boolean = False
         Parent.ToolStripStatusLabel2.Text = "Adding contact " & CharacterName
@@ -112,18 +150,33 @@ Public Class EveGate
         Me.Parent.GetWebView().Update()
         PauseUntilFinished()
 
+        'if already a contact, we'll edit. otherwise we'll add!
+        Dim IsAContact As Boolean = Me.Parent.GetWebView().ExecuteJavascriptWithResult(" " & _
+                "var matched = false; $('.profileActionsContainer .action .Col2').each(function(){ if($(this).text().match(/Edit Contact Standing/gi)) matched = true }); matched;").ToString = "true"
+
+
         '$('.col1 > div > div > div').each(function(){ alert($(this).text().match(/Sebiestor/gi)) });
         'var matched = false; $('.col1 > div > div > div').each(function(){ if($(this).text().match(/Sebiestor/gi)) matched = true }); matched;
         If ValidateCorp Then
-            Dim validateTest = Me.Parent.GetWebView().ExecuteJavascriptWithResult("var matched = false; $('.col1 > div > div > div').each(function(){ if($(this).text().match(/" & Me.Parent.CurrentEntity.Name & "/gi)) matched = true }); matched;")
+            Dim validateTest = Me.Parent.GetWebView().ExecuteJavascriptWithResult(" " & _
+                    "var matched = false; $('.col1 > div > div > div').each(function(){ if($(this).text().match(/" & Me.Parent.CurrentEntity.Name & "/gi)) matched = true }); matched;")
             Debug.Print(validateTest.ToString)
             If validateTest.ToString = "false" Then Return False
         End If
 
 
+        If Not IsAContact Then
+            Dim AddTest = Me.Parent.GetWebView().ExecuteJavascriptWithResult(helperClick("#addContact") & _
+                    "document.getElementById('addContactPopUp').setAttribute('style', ''); " & _
+                    helperClick("#divStanding0 img") & helperClick("#addToWatchlist") & helperClick("#addContactButton img"))
+        Else
+            Dim EditTest = Me.Parent.GetWebView().ExecuteJavascriptWithResult(helperClick("#editContact") & _
+                    "document.getElementById('editContactPopUp').setAttribute('style', ''); " & _
+                    helperClick("#divStanding0 img") & "$('#addToWatchlist').attr('checked', 'checked'); " & helperClick("#editContactButton img"))
+        End If
 
 
-        Dim test = Me.Parent.GetWebView().ExecuteJavascriptWithResult(helperClick("#addContact") & "document.getElementById('addContactPopUp').setAttribute('style', ''); " & helperClick("#divStanding0 img") & helperClick("#addToWatchlist") & helperClick("#addContactButton img"))
+
         Do Until Me.Parent.GetWebView().IsDocumentReady And Me.Parent.GetWebView().IsLoading = False And Me.Parent.GetWebView().IsNavigating = False
             navigated = True
             Application.DoEvents()

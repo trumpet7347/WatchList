@@ -4383,7 +4383,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGMSG_IIS_ROLLBACKVROOTS</td><td>##IDS_PROGMSG_IIS_ROLLBACKVROOTS##</td><td/></row>
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
 		<row><td>PROGRAMFILETOLAUNCHATEND</td><td>[INSTALLDIR]WatchList.Primary output</td><td/></row>
-		<row><td>ProductCode</td><td>{9E95AF56-D5EF-466A-8EA1-30C99347DAA9}</td><td/></row>
+		<row><td>ProductCode</td><td>{079C8A53-429C-4F8B-B94B-BF5A84F2CF84}</td><td/></row>
 		<row><td>ProductName</td><td>WatchList</td><td/></row>
 		<row><td>ProductVersion</td><td>1.0.0.12</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>

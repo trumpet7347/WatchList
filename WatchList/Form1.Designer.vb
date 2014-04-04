@@ -24,7 +24,7 @@ Partial Class WatchList
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(WatchList))
-        Dim WebPreferences2 As Awesomium.Core.WebPreferences = New Awesomium.Core.WebPreferences(True)
+        Dim WebPreferences9 As Awesomium.Core.WebPreferences = New Awesomium.Core.WebPreferences(True)
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -40,6 +40,7 @@ Partial Class WatchList
         Me.AddressBox1 = New Awesomium.Windows.Forms.AddressBox()
         Me.WebControl1 = New Awesomium.Windows.Forms.WebControl(Me.components)
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.chkCharCorpValidate = New System.Windows.Forms.CheckBox()
         Me.btnUpdateLabel = New System.Windows.Forms.Button()
         Me.txtUpdateLabel = New System.Windows.Forms.TextBox()
@@ -49,6 +50,12 @@ Partial Class WatchList
         Me.btnAddAll = New System.Windows.Forms.Button()
         Me.MembersList = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ContextCharacter = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.RemoveContactToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AddContactToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ViewOnEveGateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ViewOnEveWhoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.ButtonLookup = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -61,14 +68,14 @@ Partial Class WatchList
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.WebSessionProvider1 = New Awesomium.Windows.Forms.WebSessionProvider(Me.components)
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         Me.TabPage2.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextCharacter.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -251,6 +258,17 @@ Partial Class WatchList
         Me.TabPage2.Text = "Watch List"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox1.BackgroundImage = Global.WatchList.My.Resources.Resources.legend1
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.PictureBox1.Location = New System.Drawing.Point(460, 66)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(179, 21)
+        Me.PictureBox1.TabIndex = 13
+        Me.PictureBox1.TabStop = False
+        '
         'chkCharCorpValidate
         '
         Me.chkCharCorpValidate.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
@@ -330,8 +348,11 @@ Partial Class WatchList
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.MembersList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1})
+        Me.MembersList.ContextMenuStrip = Me.ContextCharacter
         Me.MembersList.FullRowSelect = True
         Me.MembersList.GridLines = True
+        Me.MembersList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
+        Me.MembersList.HideSelection = False
         Me.MembersList.Location = New System.Drawing.Point(13, 88)
         Me.MembersList.Name = "MembersList"
         Me.MembersList.Size = New System.Drawing.Size(626, 317)
@@ -346,6 +367,43 @@ Partial Class WatchList
         Me.ColumnHeader1.Text = "Character Name"
         Me.ColumnHeader1.Width = 515
         '
+        'ContextCharacter
+        '
+        Me.ContextCharacter.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RemoveContactToolStripMenuItem, Me.AddContactToolStripMenuItem, Me.ToolStripSeparator1, Me.ViewOnEveGateToolStripMenuItem, Me.ViewOnEveWhoToolStripMenuItem})
+        Me.ContextCharacter.Name = "ContextCharacter"
+        Me.ContextCharacter.Size = New System.Drawing.Size(166, 98)
+        '
+        'RemoveContactToolStripMenuItem
+        '
+        Me.RemoveContactToolStripMenuItem.Image = Global.WatchList.My.Resources.Resources.remove
+        Me.RemoveContactToolStripMenuItem.Name = "RemoveContactToolStripMenuItem"
+        Me.RemoveContactToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.RemoveContactToolStripMenuItem.Text = "Remove Selected"
+        '
+        'AddContactToolStripMenuItem
+        '
+        Me.AddContactToolStripMenuItem.Image = Global.WatchList.My.Resources.Resources.checkbox
+        Me.AddContactToolStripMenuItem.Name = "AddContactToolStripMenuItem"
+        Me.AddContactToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.AddContactToolStripMenuItem.Text = "Add Selected"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(162, 6)
+        '
+        'ViewOnEveGateToolStripMenuItem
+        '
+        Me.ViewOnEveGateToolStripMenuItem.Name = "ViewOnEveGateToolStripMenuItem"
+        Me.ViewOnEveGateToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.ViewOnEveGateToolStripMenuItem.Text = "View on Eve Gate"
+        '
+        'ViewOnEveWhoToolStripMenuItem
+        '
+        Me.ViewOnEveWhoToolStripMenuItem.Name = "ViewOnEveWhoToolStripMenuItem"
+        Me.ViewOnEveWhoToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.ViewOnEveWhoToolStripMenuItem.Text = "View on Eve Who"
+        '
         'ImageList1
         '
         Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
@@ -353,6 +411,7 @@ Partial Class WatchList
         Me.ImageList1.Images.SetKeyName(0, "checkbox.png")
         Me.ImageList1.Images.SetKeyName(1, "left-corp.png")
         Me.ImageList1.Images.SetKeyName(2, "legend.png")
+        Me.ImageList1.Images.SetKeyName(3, "remove.png")
         '
         'ButtonLookup
         '
@@ -439,20 +498,9 @@ Partial Class WatchList
         '
         'WebSessionProvider1
         '
-        WebPreferences2.RemoteFonts = False
-        Me.WebSessionProvider1.Preferences = WebPreferences2
+        WebPreferences9.RemoteFonts = False
+        Me.WebSessionProvider1.Preferences = WebPreferences9
         Me.WebSessionProvider1.Views.Add(Me.WebControl1)
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox1.BackgroundImage = Global.WatchList.My.Resources.Resources.legend1
-        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.PictureBox1.Location = New System.Drawing.Point(460, 66)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(179, 21)
-        Me.PictureBox1.TabIndex = 13
-        Me.PictureBox1.TabStop = False
         '
         'WatchList
         '
@@ -475,11 +523,12 @@ Partial Class WatchList
         Me.TabPage3.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextCharacter.ResumeLayout(False)
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -534,4 +583,10 @@ Partial Class WatchList
     Friend WithEvents txtUpdateLabel As System.Windows.Forms.TextBox
     Friend WithEvents chkCharCorpValidate As System.Windows.Forms.CheckBox
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents ContextCharacter As System.Windows.Forms.ContextMenuStrip
+    Friend WithEvents RemoveContactToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AddContactToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents ViewOnEveGateToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ViewOnEveWhoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

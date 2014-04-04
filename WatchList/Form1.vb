@@ -4,16 +4,24 @@
     Private EveGateHandler As EveGate
     Private ContactLabel As String
     Private CancellingOperation As Boolean
+    Private AddingtoWatchlist As Boolean = False
 
 
     Public Function GetWebView() As Awesomium.Windows.Forms.WebControl
         Return Me.WebControl1
     End Function
 
+    Private Sub WatchList_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        My.Settings.Save()
+    End Sub
+
     Private Sub WatchList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Test()
         Me.Text = Me.Text & " " & Application.ProductVersion
         EveGateHandler = New EveGate(Me)
+
+        chkCharCorpValidate.Checked = My.Settings.ValidateCorp
+        TextEntityName.Text = My.Settings.LastEntityName
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles ButtonLookup.Click
@@ -92,6 +100,10 @@
     Private Sub MembersList_DoubleClick(sender As Object, e As EventArgs) Handles MembersList.DoubleClick
         'TabControl1.SelectTab(2)
 
+        If AddingtoWatchlist Then
+            Exit Sub
+        End If
+
         lblContactLabel.Text = "Contact Label: " & Me.ContactLabel
         txtUpdateLabel.Visible = False
         btnUpdateLabel.Visible = False
@@ -107,6 +119,11 @@
 
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnAddAll.Click
+        AddAllToWatchList(False)
+    End Sub
+
+    Private Sub AddAllToWatchList(Optional OnlySelected As Boolean = False)
+        AddingtoWatchlist = True
 
         lblContactLabel.Text = "Contact Label: " & Me.ContactLabel
         txtUpdateLabel.Visible = False
@@ -118,8 +135,18 @@
         EveGateHandler.CreatedLabelID = ""
         Dim member As ListViewItem, i As Integer = 0
         ToolStripProgressBar1.Value = 0
-        ToolStripProgressBar1.Maximum = MembersList.Items.Count
-        For Each member In MembersList.Items()
+
+
+        Dim itemsCollection
+        If OnlySelected Then
+            itemsCollection = MembersList.SelectedItems
+        Else
+            itemsCollection = MembersList.Items
+        End If
+
+        ToolStripProgressBar1.Maximum = itemsCollection.Count
+
+        For Each member In itemsCollection
             Application.DoEvents()
             If CancellingOperation Then
                 GoTo cancel
@@ -146,6 +173,53 @@ cancel:
         btnCancel.Enabled = False
         CancellingOperation = False
         ToolStripProgressBar1.Value = 0
+        AddingtoWatchlist = False
+    End Sub
+
+    Private Sub RemoveWatchList(Optional OnlySelected As Boolean = False)
+        AddingtoWatchlist = True
+
+        lblContactLabel.Text = "Contact Label: " & Me.ContactLabel
+        txtUpdateLabel.Visible = False
+        btnUpdateLabel.Visible = False
+
+        CancellingOperation = False
+        btnAddAll.Enabled = False
+        btnCancel.Enabled = True
+        EveGateHandler.CreatedLabelID = ""
+        Dim member As ListViewItem, i As Integer = 0
+        ToolStripProgressBar1.Value = 0
+
+
+        Dim itemsCollection
+        If OnlySelected Then
+            itemsCollection = MembersList.SelectedItems
+        Else
+            itemsCollection = MembersList.Items
+        End If
+
+        ToolStripProgressBar1.Maximum = itemsCollection.Count
+
+        For Each member In itemsCollection
+            Application.DoEvents()
+            If CancellingOperation Then
+                GoTo cancel
+                Exit For
+            End If
+
+            EveGateHandler.RemoveContact(member.Text)
+            MembersList.Items.Item(member.Index).ImageIndex = 3
+
+
+            ToolStripProgressBar1.Value = ToolStripProgressBar1.Value + 1
+        Next
+
+cancel:
+        btnAddAll.Enabled = True
+        btnCancel.Enabled = False
+        CancellingOperation = False
+        ToolStripProgressBar1.Value = 0
+        AddingtoWatchlist = False
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
@@ -168,9 +242,7 @@ cancel:
         End If
     End Sub
 
-    Private Sub Awesomium_Windows_Forms_WebControl_ShowCreatedWebView(sender As Object, e As Awesomium.Core.ShowCreatedWebViewEventArgs) Handles WebControl1.ShowCreatedWebView
 
-    End Sub
 
     Private Sub TextEntityName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextEntityName.KeyPress
 
@@ -210,4 +282,61 @@ cancel:
         End If
     End Sub
 
+    Private Sub MembersList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MembersList.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub ContextCharacter_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextCharacter.Opening
+        ' 
+        If AddingtoWatchlist Then
+            e.Cancel = True
+            Exit Sub
+        End If
+
+
+        RemoveContactToolStripMenuItem.Enabled = MembersList.SelectedItems.Count > 0
+        AddContactToolStripMenuItem.Enabled = RemoveContactToolStripMenuItem.Enabled
+
+        ViewOnEveGateToolStripMenuItem.Enabled = MembersList.SelectedItems.Count = 1
+        ViewOnEveWhoToolStripMenuItem.Enabled = ViewOnEveGateToolStripMenuItem.Enabled
+    End Sub
+
+    Private Sub chkCharCorpValidate_CheckedChanged(sender As Object, e As EventArgs) Handles chkCharCorpValidate.CheckedChanged
+        My.Settings.ValidateCorp = chkCharCorpValidate.Checked
+
+    End Sub
+
+    Private Sub TextEntityName_TextChanged(sender As Object, e As EventArgs) Handles TextEntityName.TextChanged
+        My.Settings.LastEntityName = TextEntityName.Text
+    End Sub
+
+    Private Sub AddContactToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddContactToolStripMenuItem.Click
+        AddAllToWatchList(True)
+    End Sub
+
+    Private Sub RemoveContactToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveContactToolStripMenuItem.Click
+        If MessageBox.Show("Are you sure you want to remove selected Contacts?", "Remove", MessageBoxButtons.YesNo) = vbYes Then
+            RemoveWatchList(True)
+        End If
+    End Sub
+
+    Private Sub ViewOnEveGateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewOnEveGateToolStripMenuItem.Click
+        Dim proc As New Process
+        With proc.StartInfo
+            .FileName = "https://gate.eveonline.com/Profile/" & MembersList.SelectedItems.Item(0).Text
+            .UseShellExecute = True
+            .Verb = "open"
+        End With
+        proc.Start()
+    End Sub
+
+    Private Sub ViewOnEveWhoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewOnEveWhoToolStripMenuItem.Click
+        Dim proc As New Process
+        With proc.StartInfo
+            .FileName = "http://evewho.com/pilot/" & MembersList.SelectedItems.Item(0).Text
+            .UseShellExecute = True
+            .Verb = "open"
+        End With
+        proc.Start()
+    End Sub
 End Class
