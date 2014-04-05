@@ -98,7 +98,7 @@ img {
 header {
   width:270px;
   float:left;
-  position:fixed;
+  /*position:fixed;*/
 }
 
 header ul {
@@ -183,7 +183,7 @@ hr {
 footer {
   width:270px;
   float:left;
-  position:fixed;
+  /*position:fixed;*/
   bottom:50px;
 }
 
@@ -262,4 +262,5 @@ footer {
 
 #disqus_thread {
   margin-top: 15px;
+  margin-bottom: 15px;
 }
